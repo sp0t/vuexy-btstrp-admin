@@ -1,5 +1,6 @@
 <template>
   <li
+    v-if="item.children.some(i => $can(item.action, item.resource))"
     class="nav-item has-sub"
     :class="{
       'open': isOpen,
@@ -12,7 +13,7 @@
       @click="() => updateGroupOpen(!isOpen)"
     >
       <feather-icon :icon="item.icon || 'CircleIcon'" />
-      <span class="menu-title text-truncate">{{ item.title }}</span>
+      <span class="menu-title text-truncate">{{ $t(item.title) }}</span>
       <b-badge
         v-if="item.tag"
         pill

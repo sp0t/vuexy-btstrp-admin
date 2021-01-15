@@ -1,5 +1,6 @@
 <template>
   <li
+    v-if="$can(item.action, item.resource)"
     class="nav-item"
     :class="{'sidebar-group-active active': isActive}"
   >
@@ -11,7 +12,7 @@
         size="14"
         :icon="item.icon"
       />
-      <span>{{ item.title }}</span>
+      <span>{{ $t(item.title) }}</span>
     </b-link>
   </li>
 </template>

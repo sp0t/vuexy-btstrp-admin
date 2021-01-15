@@ -1,5 +1,6 @@
 <template>
   <li
+    v-if="item.children.some(i => $can(i.action, i.resource))"
     class="dropdown dropdown-submenu"
     :class="{
       'show': isOpen,
@@ -17,7 +18,7 @@
       @click="() => updateGroupOpen(!isOpen)"
     >
       <feather-icon :icon="item.icon || 'CircleIcon'" />
-      <span class="menu-title">{{ item.title }}</span>
+      <span class="menu-title">{{ $t(item.title) }}</span>
     </b-link>
     <ul
       ref="refChildDropdown"
